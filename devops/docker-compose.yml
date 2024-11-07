@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  postgres:
+    container_name: social_postgres
+    image: postgres:17.0-alpine3.20
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=db_social
+    networks:
+      - app_network
+networks:
+  app_network:
+    name: social
+
